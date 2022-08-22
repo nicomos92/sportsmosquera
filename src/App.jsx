@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import NavBar from './components/NavBar';
+import NavbarComponent from './components/NavbarComponent';
+import ItemListContainer from './container/ItemListContainer'; 
 
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
+      <NavbarComponent/>
+      <ItemListContainer greeting="50% OFF en Futbol" />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,7 +20,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Sports Mosquera
+          <ItemListContainer greeting="Sports Mosquera"/>
         </a>
       </header>
     </div>
