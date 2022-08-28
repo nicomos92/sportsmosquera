@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <NavbarComponent/>
-      <ItemListContainer greeting="50% OFF en Futbol" />
+      <ItemListContainer greeting="50% OFF en Futbol" titulo="Articulos"/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,7 +20,6 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <ItemListContainer greeting="Sports Mosquera"/>
         </a>
       </header>
     </div>
