@@ -19,6 +19,11 @@ const ItemCountComponent = ({ stock, initial,titulo }) => {
     }
   };
 
+  const addCart = () =>{
+    console.log("La cantidad a agregar es",quantity)
+
+  }
+
 
   return (
     <Container>
@@ -36,7 +41,7 @@ const ItemCountComponent = ({ stock, initial,titulo }) => {
         </Button>
       </ButtonGroup>
       <Container className='mt-1'>
-        <Button variant="outline-primary" className={'px-3'}>Agregar al carrito</Button>
+        <Button variant="outline-primary" className={'px-3'} onClick={addCart}> Agregar al carrito </Button>
       </Container>
     </Container>
   );

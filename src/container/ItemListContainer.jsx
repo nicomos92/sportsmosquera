@@ -1,19 +1,47 @@
+import { useEffect, useState } from "react"
 import Container from 'react-bootstrap/Container';
+import ItemComponent from "../components/ItemComponent";
 import ItemCountComponent from "../components/ItemCountComponent";
-import Stack from 'react-bootstrap/Stack';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
-const ItemListContainer = ({ greeting,titulo }) => {
+const ItemListContainer = () => {
+    const [pokemons, setPokemons] = useState({})
+
+    const fetchData = () => {
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setPokemons(data)
+            })
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
     return (
-        <Container clasName="bg-light border">
-            <h3 className="bg-light">{greeting}</h3>
+        <Container>
+            <ItemCountComponent stock="5" initial="0"/>
+            <br/>
+            <Row>
+                { Object.entries(pokemons).length !== 0 &&
+                    (
+                        pokemons.results.map( ( pokemon, idx ) => (
+                            <Col key={idx} sm={4}>
+                                <ItemComponent item={pokemon} />
+                            </Col>
+                            )
+                        )
+                    )
+                }
+            </Row>
+
             <br />
-            <h2 className='bg-danger'>{titulo}</h2>
-            <Stack direction="horizontal" gap={3}>
-                <div className="bg-light  ms-auto"><ItemCountComponent stock={5} initial={0} titulo="Camiseta"/></div>
-                <div className="bg-light  ms-auto"><ItemCountComponent stock={2} initial={0} titulo="Pelota"/> </div>
-                <div className="bg-light  ms-auto"><ItemCountComponent stock={4} initial={0} titulo="Zapatilla"/> </div>
-            </Stack>
         </Container>
     )
 }
