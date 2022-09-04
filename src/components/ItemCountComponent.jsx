@@ -7,6 +7,7 @@ const ItemCountComponent = ({ stock, initial,titulo }) => {
 
   const [quantity, setQuantity] = useState(parseInt(initial));
 
+
   const addQuantity = () => {
     if (quantity + 1 <= stock) {
       setQuantity(quantity => quantity + 1);
