@@ -1,122 +1,33 @@
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/Image'
-import Spinner from 'react-bootstrap/Spinner';
-import Container from "react-bootstrap/Container";
-import Badge from 'react-bootstrap/Badge';
+import { Stack } from 'react-bootstrap';
 
-
-import pokemonTypeColors from "../../../data/pokemonTypeColors"
-
-import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-
-const URL = "https://pokeapi.co/api/v2/pokemon/"
-
-const ItemComponent = ({ id }) => {
-
-    const [pokemon, setPokemon] = useState({})
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [isError, setIsError] = useState(false);
-
-    const fetchData = (url) => {
-        try{
-            fetch(url)
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    setIsLoaded(true);
-                    setPokemon(data)
-                })
-        }catch (error){
-            console.log('Error: ', error)
-            setIsError(true);
-        }
-
-    }
-
-    useEffect(() => {
-        fetchData(URL + id + '/')
-    }, [])
-
-
-    if (isError){
-        return (
-            <Container>
-                <Card>
-                    <Card.Body>
-                        <Card.Title>ERROR</Card.Title>
-                    </Card.Body>
-                </Card>
-                <br />
-            </Container>
-
-        );
-    }
-
-    if (!isLoaded) {
-        // Spinner si no hay nada para mostrar
-        return (
-            <Container>
-                <Card>
-                    <Card.Body>
-                        <Card.Title>Cargando...</Card.Title>
-                        <Spinner animation="border" role="status" />
-                    </Card.Body>
-                </Card>
-                <br />
-            </Container>
-
-        );
-    }
+function ItemDetail ({pokemon, ...props}) {
 
     return (
-        <Container>
-            <Card className="bg-dark text-white">
-                <Card.Header>{pokemon.name.toUpperCase()} - ({pokemon.id})</Card.Header>
+        <>
+            <Card style={{ width: '18rem' }} className="text-white" key="dark" bg="dark" border="secondary">
+                <Card.Img src={pokemon.sprites.back_shiny}  alt={""}
+                                            className={'rounded'}
+                                            style={{'outline-style': 'solid', 'outline-color': 'white'}}
+                                            width={"100px"} height={"100px"} />
                 <Card.Body>
-                    <Card.Title></Card.Title>
+                    <Card.Title>{pokemon.name}</Card.Title>
                     <Card.Text>
-
+                    <Card.Text>
+                            <Stack gap={3}>
+                                <div>Podedex Id: {pokemon.id}</div>
+                                <div>Nombre: {pokemon.name.toUpperCase()}</div>
+                                <div>Altura: {pokemon.height}</div>
+                                <div>Peso: {pokemon.weight}</div>
+                            </Stack>
                     </Card.Text>
-                    <Image src={pokemon.sprites.other.dream_world.front_default} alt={""}
-                        width={"200px"} height={"200px"}
-                    />
-
+                    </Card.Text>
                 </Card.Body>
-                <Link to={'/pokemon/' +id }>
-                    <Button variant="outline-success" className={'m-2'}>
-                        <Image src={pokemon.sprites.front_default} alt={""}
-                            width={"40px"} height={"40px"}
-                        />
-                        Ver detalle
-                    </Button>
-                </Link>
-                <Card.Footer >
-                    {pokemon.types.map(p => {
-                        let currentTypeColor = pokemonTypeColors[p.type.name]
-                        console.log(p.type.name)
-                        return (
-                            <Button variant="outline-dark"
-                                style={{
-                                    backgroundColor: currentTypeColor,
-                                    color: "white",
-                                    margin: "0 3px"
-                                }}
-                                >
-                                {p.type.name}
-                            </Button>
-                        )
-                    })}
-
-                </Card.Footer>
             </Card>
-            <br/>
+        </>
 
-        </Container>
     )
 
 }
 
-export default ItemComponent;
+export default ItemDetail;
