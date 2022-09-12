@@ -13,6 +13,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<ItemListContainer/>} />
                     <Route path="/pokemon/:id" element={<ItemDetailConteiner  />} />
+                    <Route path="/types/:type" element={<ItemDetailConteiner />} />
                 </Routes>
             </BrowserRouter>
         </>
