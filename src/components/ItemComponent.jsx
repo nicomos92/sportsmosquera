@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 
 import {useEffect, useState} from "react";
 
+import {Link} from 'react-router-dom'
 
 const ItemComponent = ({ item }) => {
 
@@ -61,12 +62,14 @@ const ItemComponent = ({ item }) => {
                     />
 
                 </Card.Body>
-                <Button variant="outline-success" className={'m-2'}>
-                    <Image src={pokemon.sprites.front_default} alt={""}
-                        width={"40px"} height={"40px"}
-                    />
-                    Ver detalle
-                </Button>
+                <Link to={"/pokemon/"+pokemon.id}>
+                    <Button variant="outline-success" className={'m-2'}>
+                        <Image src={pokemon.sprites.front_default} alt={""}
+                            width={"40px"} height={"40px"}
+                        />
+                        Ver detalle
+                    </Button>
+                </Link>
                 <Card.Footer >
                     {pokemon.types.length > 0 ? pokemon.types[0].type.name.toUpperCase() : ''}
                 </Card.Footer>

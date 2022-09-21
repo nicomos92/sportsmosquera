@@ -1,26 +1,27 @@
 import Card from 'react-bootstrap/Card';
 import { Stack } from 'react-bootstrap';
+import NavbarComponent from './NavbarComponent';
 
 function ItemDetail({ pokemon, ...props }) {
 
     return (
         <>
-            <Card style={{ width: '18rem' }} className="text-white" key="dark" bg="dark" border="secondary">
-                <Card.Img src={pokemon.sprites.back_shiny} alt={""}
-                    className={'rounded'}
-                    style={{ 'outlineStyle': 'solid', 'outlineColor': 'white' }}
-                    width={"100px"} height={"100px"} />
+            <br></br>
+            <Card className="text-white" key="dark" bg="dark" border="secondary" style={{ 'outlineStyle': 'solid', 'outlineColor': 'red' }}>
+                <Card.Img src={pokemon.sprites.other.dream_world.front_default} alt={""}
+                    width={"100px"} height={"200px"} />
+                <br/>
                 <Card.Body>
-                    <Card.Title>{pokemon.name}</Card.Title>
+                    <Card.Title>{pokemon.name.toUpperCase()}</Card.Title>
                     <Card.Text>
                         <Card.Text>
-                            <Stack gap={3}>
+                            <Stack gap={2}>
                                 <span>Podedex Id: {pokemon.id}</span>
-                                <span>Nombre: {pokemon.name.toUpperCase()}</span>
+                                <span>Tipo: {pokemon.types.length > 0 ? pokemon.types[0].type.name.toUpperCase() : ''}</span>
                                 <span>Altura: {pokemon.height}</span>
                                 <span>Peso: {pokemon.weight}</span>
                             </Stack>
-                        </Card.Text>
+                        </Card.Text>S
                     </Card.Text>
                 </Card.Body>
             </Card>

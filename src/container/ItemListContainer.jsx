@@ -26,7 +26,6 @@ const ItemListContainer = () => {
 
     return (
         <Container>
-            <ItemCountComponent stock="5" initial="0"/>
             <br/>
             <Row>
                 { Object.entries(pokemons).length !== 0 &&

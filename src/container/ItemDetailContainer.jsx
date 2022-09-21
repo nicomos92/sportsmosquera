@@ -7,6 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import ItemDetail from "../components/Item";
 import ItemCountComponent from "../components/ItemCountComponent";
 import { CartContext } from '../context/cartContext';
+import Navbar from  '../components/NavbarComponent'      
 
 import { useContext } from 'react';
 
@@ -84,7 +85,7 @@ const ItemDetailConteiner = () => {
     }
 
     return (
-        <Container className={'mt-2'} style={{ margin: "2rem 0 5rem 0", overflowX: "hidden" }}>
+        <Container>
             <ItemDetail pokemon={pokemon}/>
             
             {
@@ -92,7 +93,7 @@ const ItemDetailConteiner = () => {
             }
 
             <Link to={'/'}>
-            <Button>Volver al home</Button>
+            <Button className="btn-danger">Volver al home</Button>
             </Link>
             
         </Container> 

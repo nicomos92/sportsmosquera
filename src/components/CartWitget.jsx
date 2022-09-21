@@ -8,14 +8,15 @@ const CartWidgetComponent =() =>{
 
     return(
         <>
+        <span className='.text-white'> {cart.length} </span>
+        
         <img
             alt=""
-            src="carritodecompras.png"
+            src="../carritodecompras.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
         />
-        <span> {cart.length}</span>
         </>
         
     )

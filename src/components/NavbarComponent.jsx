@@ -8,7 +8,7 @@ const NavbarComponent =() =>{
     return(
         <Navbar collapseOnSelect expand="lg" bg="danger" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img
                         alt=""
                         src="2158416.png"
@@ -22,20 +22,13 @@ const NavbarComponent =() =>{
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="navbar-nav mx-auto">
-                        <Nav.Link href="#ofertas">Ofertas</Nav.Link>
-                        <NavDropdown title="Marcas" className="navbar-nav mx-auto">
-                            <NavDropdown.Item href="#action/3.1">Adidas</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Nike </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Topper</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.4">Umbro</NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav.Link href="/types">Tipos</Nav.Link>
                         <Nav.Link href="#novedades">Novedades</Nav.Link>
-                        <NavDropdown title="Deportes" className="navbar-nav mx-auto">
-                            <NavDropdown.Item href="#action/3.1">Futbol</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Basquet </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Hockey</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Otros</NavDropdown.Item>
+                        <NavDropdown title="Regiones" className="navbar-nav mx-auto">
+                            <NavDropdown.Item href="/regions/Johto">Johto</NavDropdown.Item>
+                            <NavDropdown.Item href="/regions/Alola">Alola  </NavDropdown.Item>
+                            <NavDropdown.Item href="/regions/Galar">Galar</NavDropdown.Item>
+                            <NavDropdown.Item href="/regions/Kanto">Kanto</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav className="navbar-nav mx-auto">
