@@ -1,49 +1,43 @@
 import Container from 'react-bootstrap/Container';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 
-const ItemCountComponent = ({ stock, initial, onAdd }) => {
+const ItemCountComponent = ({ stock, initial, handlerAddItem }) => {
 
   const [quantity, setQuantity] = useState(parseInt(initial));
-
 
   const addQuantity = () => {
     if (quantity + 1 <= stock) {
       setQuantity(quantity => quantity + 1);
+    } else {
+      alert("El stock disponible es: " + stock);
     }
   };
 
   const subtractQuantity = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(quantity => quantity - 1);
     }
   };
 
 
   return (
-    <Container>
+    <Container className='bg-dark'>
       <h5>Stock: {stock} </h5>
-      <ButtonGroup>
+    
+      <div className=" bg-dark btn-group d-flex justify-content-between col-md-12" role="group" aria-label="Basic example">
         <Button className="btn btn-danger px-3" onClick={subtractQuantity}>
           <i className="fas fa-minus">-</i>
         </Button>
-
-        <input className={'text-center'} min={'0'} type={'number'} value={quantity} />
-
-        <Button className="btn btn-danger px-3" onClick={addQuantity}>
+        <span className="text-center col-md-5 p-1">
+          {quantity}
+        </span>
+        <Button className="btn btn-success px-3" onClick={addQuantity}>
           <i className="fas fa-plus">+</i>
         </Button>
-      </ButtonGroup>
+      </div>
       <Container className='mt-1'>
-
-        {/* TOCAMOS ACA */}
-        <Button variant="outline-danger" className={'px-3'} 
-        onClick={
-          () => {onAdd(quantity)}
-          }> Agregar al carrito </Button>
-        {/* TOCAMOS ACA */}
-
+        <Button variant="outline-success" className={'col-md-12'} onClick={() => {handlerAddItem(quantity)}}>Agregar al carrito</Button>
       </Container>
     </Container>
   );
