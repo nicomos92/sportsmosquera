@@ -1,7 +1,7 @@
 # Curso React - Ecommerce Demo
 
 
-####  Autor: Cristian Murcia
+####  Nicolas Mosquera
 
 
 ## Sobre el proyecto
