@@ -18,6 +18,7 @@ function App() {
               <Route path="/" element= {<ItemListConteiner />} />
               <Route path="/finalizarCompra" element={<ContactForm/>} />
               <Route path="/detalle/:id" element={<ItemDetailConteiner/>} />
+              <Route path="/Categoria/:idCategoria" element={<ItemListConteiner/>} />
             </Routes>
             <FooterComponent/>
           </BrowserRouter>

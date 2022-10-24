@@ -26,3 +26,7 @@ footer{
 .dropdown .desplegable{
   color: red;
 }
+
+html{
+  background-color: #282c34;
+}
